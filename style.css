@@ -1,0 +1,317 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500&display=swap");
+/*https://colorhunt.co/palette/aa77ffc9eeff97deff62cdff*/
+* {
+  font-family: "Poppins", sans-serif;
+}
+
+body,
+html {
+  padding: 0px;
+  margin: 0px;
+  height: 100%;
+}
+
+.sideBar {
+  width: 250px;
+  height: 100%;
+  background-color: rgb(241, 240, 240);
+  padding-top: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: auto;
+  position: fixed;
+}
+.sideBarButton {
+  border: none;
+  width: 200px;
+  height: 40px;
+  min-height: 40px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  padding-left: 20px;
+  margin-bottom: 10px;
+  transition: 0.3s;
+  color: rgb(54, 54, 54);
+  background-color: transparent;
+}
+
+.sideBarButton i {
+  margin-right: 10px;
+}
+
+.sideBarButton:hover {
+  background-color: #aa77ff !important;
+  color: white !important;
+}
+
+.sideBar p {
+  margin: 10px;
+  font-size: 12px;
+  color: rgb(188, 188, 188);
+  margin: 0px;
+  padding: 0px;
+}
+
+.buttonItemCont{
+  background-color: #aa77ff;
+  width: 200px;
+  border-radius: 10px;
+  height: 0px;
+  transition: 0.4s;
+  margin-bottom: 10px;
+  overflow: auto;
+  color: white;
+  display: flex;
+  flex-direction: column;
+}
+
+.buttonItemCont ul{
+  font-size: 13px;
+  list-style-type: none;
+  margin-left: -25px;
+}
+
+.buttonItemCont li{
+  margin-bottom: 5px;
+}
+
+#mainContent{
+  margin-left: 250px;
+  height: 100%;
+  padding-top: 20px;
+}
+
+.kartu{
+  width : 300px;
+  height: 200px;
+  background-color: white;
+  margin: 10px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.userInfo{
+  border-bottom: 1px solid gray;
+  margin: 0px 20px;
+  padding-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.currentStatus{
+  margin : 20px 20px 0px 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.currentStatusItem{
+  height: 150px;
+  width: 250px;
+  border: thin solid rgb(188, 188, 188);
+  border-radius: 20px;
+  transition: 0.3s;
+}
+
+.currentStatusItem:hover{
+  height: 155px;
+  width: 255px;
+}
+
+.statusItemLabel{
+  padding-top: 20px;
+  padding-left: 30px;
+  color: rgb(109, 109, 109);
+}
+
+.statusItemContent{
+  display: flex;
+  align-items: center;
+  padding:5px 0px 0px 20px;
+}
+
+.icon-style{
+  width: 60px;
+  height: 60px;
+  border-radius: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.userOrder{
+  margin: 0px 20px 20px 20px;
+  height: 0;
+  border-bottom: thin solid gray;
+  transition: 0.4s;
+  overflow: auto;;
+}
+
+.signBox{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.formBox{
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  width: 250px;
+  align-items: center;
+  gap: 20px;
+}
+
+
+.errorMsgUser{
+  display: flex;
+  flex-direction: column;
+}
+
+.bookedRoom{
+  width: 500px;
+  height: 300px;
+  border: thin solid rgb(188, 188, 188);
+  border-radius: 10px;
+  display: grid;
+  grid-template-areas: 'gambar gambar info'
+  'gambar gambar info'
+  'tombol tombol tombol';
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+}
+
+.receiptInfo{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.gambarKamarOrdered{
+  padding: 10px;
+  border-radius: 10px;
+  grid-area: gambar;
+  display: flex;
+}
+
+
+.infoKamarOrdered{
+  grid-area: info;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  font-size: 11px;
+}
+
+.tombolReceipt{
+  grid-area: tombol;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.tombolReceipt button{
+  height: 40px;
+}
+
+.container {
+  background-color: #62CDFF;
+  width: 350px;
+  height: 250px;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.card {
+  background-color: rgb(255, 255, 255);
+  padding: 10px;
+  border-radius: 10px;
+  display: grid;
+  grid-template-areas:
+    "gambar gambar fasilitas"
+    "gambar gambar fasilitas"
+    "nama nama nama";
+  grid-template-columns: 1fr 1fr 0.8fr;
+  grid-template-rows: 1fr 1fr 0.2fr;
+}
+
+.gambarKamar {
+  grid-area: gambar;
+}
+
+.contFasilitas {
+  grid-area: fasilitas;
+  display: flex;
+  flex-direction: column;
+}
+
+.fasilitasBox,
+.bpjsBox,
+.hargaBox,
+.lainBox {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: end;
+  border-bottom: thin solid rgb(203, 203, 203);
+  margin: 0px 5px 0px 10px;
+}
+
+.itemColor {
+  background-color: aquamarine;
+  margin: 2px;
+  padding: 0px 2px 0px 2px;
+  border-radius: 5px;
+  font-size: 6.5px;
+}
+
+.namaRS {
+  padding-top: 5px;
+  grid-area: nama;
+  font-weight: 500;
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+}
+
+.namaRS button{
+  background-color: white;
+  width: 60px;
+  height: 40px;
+  border: thin solid #54c9ff;
+  border-radius: 10px;
+  color: rgb(0, 0, 0);
+  transition: 0.4s;
+}
+
+.namaRS button:hover{
+  width: 62px;
+  height: 42px;
+  background-color: #54c9ff;
+  color: white;
+}
+
+.statusKamar{
+  text-align: center;
+  padding-top: 10px;
+  font-weight: 500;
+  color: white;
+}
+
+.hospitalCard{
+  border-top: thin solid gray;
+  margin: 20px;
+  padding-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  row-gap: 20px;
+}
+
+.bpjsCont{
+
+}

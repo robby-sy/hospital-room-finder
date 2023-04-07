@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    />
+    <title>Hospital Rooms</title>
+  </head>
+  <body>
+    <div class="sideBar">
+      <img src="Resource/logo.png" alt="" width="250px" />
+      <button
+        class="sideBarButton"
+        style="background-color: #aa77ff; color: white"
+      >
+        <i class="material-icons">store</i>Dashboard
+      </button>
+      <button
+        class="sideBarButton"
+        id="orderButton"
+        onclick="showItemSideBar(this,'320px','userOrder')"
+      >
+        <i class="material-icons">view_headline</i>Order
+      </button>
+      <p>Filter By</p>
+      <hr width="80%" style="color: rgb(216, 216, 216)" />
+      <button
+        class="sideBarButton"
+        id="filterRumahSakit"
+        onclick="showItemSideBar(this,'200px','rumahSakitCont')"
+      >
+        <i class="material-icons">hotel</i>Rumah Sakit
+      </button>
+      <div class="buttonItemCont" id="rumahSakitCont">
+        <ul id="listRumahSakit"></ul>
+      </div>
+      <button class="sideBarButton" id="fiterPembayaran" onclick="showItemSideBar(this,'80px','bpjsCont')">
+        <i class="material-icons">local_atm</i>Pembayaran
+      </button>
+      <div class="buttonItemCont" id="bpjsCont">
+        <ul>
+          <li>
+            <input type="checkbox" name="bpjsCheck" id="bpjsCheck">
+            <label for="bpjsCheck">BPJS</label>
+          </li>
+          <li>
+            <input type="checkbox" name="cashCheck" id="cashCheck">
+            <label for="cashCheck">Tunai</label>
+          </li>
+        </ul>
+      </div>
+      <button class="sideBarButton" id="filterUsia" onclick="showItemSideBar(this,'80px','usiaCont')">
+        <i class="material-icons">face</i>Usia
+      </button>
+      <div class="buttonItemCont" id="usiaCont">
+        <label for="usiaInput" style="margin: 5px;font-size: 12px;">Masukan Usia Anda</label>
+        <input type="number" name="usiaInput" id="usiaInput" style="margin: 5px;">
+      </div>
+      <button class="sideBarButton" id="filterJK" onclick="showItemSideBar(this,'80px','jkCont')">
+        <i class="material-icons">group</i>Jenis kelamin
+      </button>
+      <div class="buttonItemCont" id="jkCont">
+        <label for="jkInput" style="margin: 5px;font-size: 12px;">Jenis Kelamin</label>
+        <select name="jkInput" id="jkInput" style="margin: 5px;">
+          <option value="Laki-Laki">Laki-Laki</option>
+          <option value="Perempuan">Perempuan</option>
+        </select>
+      </div>
+      <button class="sideBarButton" id="filterHarga" onclick="showItemSideBar(this,'80px','hargaCont')">
+        <i class="material-icons">euro_symbol</i>Harga
+      </button>
+      <div class="buttonItemCont" id="hargaCont">
+        <label for="hargaInput" style="margin: 5px;font-size: 12px;">Kisaran Harga Kamar</label>
+        <input type="number" name="hargaInput" id="hargaInput" style="margin: 5px;">
+      </div>
+      <button class="sideBarButton" id="filterFasilitas" onclick="showItemSideBar(this,'200px','filterCont')">
+        <i class="material-icons">extension</i>Fasilitas
+      </button>
+      <div class="buttonItemCont" id="filterCont">
+        <ul id="listFasilitas"></ul>
+      </div>
+      <button id="filterButton" onclick="updateFilter()">Cari</button>
+    </div>
+
+    <div id="mainContent">
+      <div class="userInfo">
+        <div class="userName">Selamat Datang</div>
+        <div class="userPhoto">gambar</div>
+      </div>
+      <div class="userOrder" id="userOrder"></div>
+      <div class="currentStatus">
+        <div class="currentStatusItem">
+          <div class="statusItemLabel">Kamar Tersedia</div>
+          <div class="statusItemContent">
+            <div
+              class="icon-style"
+              style="color: #00aeff; background-color: #62cdff48"
+            >
+              <i class="material-icons">airline_seat_individual_suite</i>
+            </div>
+            <h1 style="padding-left: 20px">32</h1>
+          </div>
+        </div>
+        <div class="currentStatusItem">
+          <div class="statusItemLabel">UGD Siap</div>
+          <div class="statusItemContent">
+            <div
+              class="icon-style"
+              style="color: #eb6440; background-color: #eb65404d"
+            >
+              <i class="material-icons">add_alert</i>
+            </div>
+            <h1 style="padding-left: 20px">20</h1>
+          </div>
+        </div>
+        <div class="currentStatusItem">
+          <div class="statusItemLabel">Rumah Sakit</div>
+          <div class="statusItemContent">
+            <div
+              class="icon-style"
+              style="color: #fc2947; background-color: #fc294946"
+            >
+              <i class="material-icons">local_hospital</i>
+            </div>
+            <h1 style="padding-left: 20px">8</h1>
+          </div>
+        </div>
+        <div class="currentStatusItem">
+          <div class="statusItemLabel">Ambulan Tersedia</div>
+          <div class="statusItemContent">
+            <div
+              class="icon-style"
+              style="color: #14c38e; background-color: #14c38f44"
+            >
+              <i class="material-icons"> local_shipping</i>
+            </div>
+            <h1 style="padding-left: 20px">28</h1>
+          </div>
+        </div>
+      </div>
+      <div class="hospitalCard" id="hospitalCard"></div>
+    </div>
+    <script src="index.js"></script>
+  </body>
+</html>
