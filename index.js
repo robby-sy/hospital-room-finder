@@ -1278,8 +1278,8 @@ function updateUserOrder() {
     formUsia.style =
       "width: 250px;height: 40px; text-align: center; color: gray;";
     formJK.style = "width: 250px;height: 40px;";
-    formNama.value = "Masukan Nama Anda";
-    formUsia.value = "Masukan Usia Anda";
+    formNama.placeholder = "Masukan Nama Anda";
+    formUsia.placeholder = "Masukan Usia Anda";
     selectMan.innerHTML = "Laki-Laki";
     selectMan.setAttribute("value", "Laki-Laki");
     selectWoman.innerHTML = "Perempuan";
@@ -1301,6 +1301,10 @@ function updateUserOrder() {
     mainBox.appendChild(signBox);
   } else {
     if (bookedRoom.length === 0) {
+      let box = document.getElementById('userOrder');
+      box.innerHTML = `Silahkan Pesan Kamar ${User.Nama} <br>
+      <button onclick = "hapusUser()">Hapus User</button>`;
+
     } else {
       let mainBox = document.getElementById("userOrder");
       mainBox.innerHTML = ` 
@@ -1335,7 +1339,7 @@ function submitNewUser() {
   User.Nama = nama;
   User.Usia = umur;
   User.JK = jk;
-  console.log(User);
+  updateUserOrder()
 }
 
 function updateFilteredRoom() {
@@ -1386,7 +1390,7 @@ function updateFilteredRoom() {
         </div>
         <div class="namaRS">
           ${kamar["Rumah Sakit"]} || ${kamar.Nama}
-          <button>Pesan</button>
+          <button onclick="pesanKamar(${kamar['Rumah Sakit']},${kamar.Nama})">Pesan</button>
         </div>
     </div>
     <div class="statusKamar">Kamar Tersedia</div>
@@ -1395,57 +1399,27 @@ function updateFilteredRoom() {
   }
 }
 
+function pesanKamar(RS,Room){
+  for (const rumahSakit of DB_rumahSakit) {
+    if(rumahSakit === RS){
+      for (const Kamar of rumahSakit.Kamar) {
+        if(Kamar.Nama === Room){
+          bookedRoom.push(Kamar);
+        }
+      }
+    }
+  }updateUserOrder();
+}
+
+function hapusUser(){
+  User = {};
+  updateUserOrder();
+}
+
 let User = {};
 
 updateUserOrder();
 
-let bookedRoom = [
-  {
-    Nama: "Super Suite",
-    Harga: 5000000,
-    BPJS: false,
-    Fasilitas: [
-      "AC",
-      "TV",
-      "Kamar Mandi",
-      "Sofa",
-      "Kasur Penjaga",
-      "Internet",
-      "Taman",
-    ],
-    Kapasitas: 1,
-    umur: ["Dewasa", "Remaja", "Anak"],
-    JK: ["Perempuan", "Laki-Laki"],
-    Ketersediaan: [[0], [0], [0], [0], [0], [0], [0]],
-    rumahSakit: "RSUD Kota Bengkulu",
-  },
-  {
-    Nama: "VIP",
-    Harga: 4500000,
-    BPJS: false,
-    Fasilitas: [
-      "AC",
-      "TV",
-      "Kamar Mandi",
-      "Sofa",
-      "Taman",
-      "Internet",
-      "Kichen Kabinet",
-    ],
-    Kapasitas: 2,
-    umur: ["Dewasa", "Remaja", "Anak"],
-    JK: ["Perempuan", "Laki-Laki"],
-    Ketersediaan: [
-      [0, 0],
-      [0, 0],
-      [0, 0],
-      [0, 0],
-      [0, 0],
-      [0, 0],
-      [0, 0],
-    ],
-    rumahSakit: "RSUD Dr. M. Yunus",
-  },
-];
+let bookedRoom = [];
 
 updateFilteredRoom();
